@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <h4>Anne's Cookbook</h4>
+        <!-- <a href="/home" <%- title === 'Home' ? 'class="active"' : '' %>>HOME</a>
+        <a href="/recipes" <%- title === 'All Recipes' ? 'class="active"' : '' %>>RECIPES</a>
+
+        NO USERS: 
+        HOME RECIPES LOG IN CREATE ACCOUNT
+        USERS: 
+        HOME RECIPES ADD RECIPE LOG OUT -->
+        <% if (user) { %>
+            <!-- <a href="/recipes/new" <%- title === 'Add Recipes' ? 'class="active"' : '' %>>ADD RECIPES</a> -->
+            <a href="/logout">LOG OUT</a>
+        <% } else { %>
+            <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a></a>
+            <a href="/auth/google" class="createaccount">CREATE ACCOUNT&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a></a>
+        <% } %>
+    </nav>
+    <main>
+        <!-- <h1><%= title %></h1> -->
