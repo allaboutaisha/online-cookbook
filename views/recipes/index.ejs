@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<!<%- include('../partials/header') %>
+
 <body>
     <h1>RECIPES</h1>
     <table>
@@ -18,17 +12,22 @@
             </tr>
         </thead>
         <tbody>
-            <% recipes.forEach(function(a) { %> 
+            <% recipes.forEach(function(r) { %> 
             <tr>
                 <td><%= r.name %></td> 
                 <td><%= r.image %></td> 
                 <td><%= r.directions %></td> 
+                <td><%= r.categories %></td> 
                 <td><%= r.ingredients %></td> 
+                <td><a href="/recipes/<%= r.id %>">View this Recipe</td> 
+
             </tr>
             <% }) %>     
-        </tbody>            
+        </tbody> 
     </table>
 </body>
 </html>
 
 <a href="/recipes/new">NEW</a>
+
+<%- include('../partials/footer') %>

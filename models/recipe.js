@@ -13,7 +13,7 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
     name: String,
-    image: String,
+    imgURL: String,
     directions: String,
     categories: [String],
     ingredients: [String]
