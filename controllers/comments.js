@@ -1,30 +1,42 @@
-// function create(req, res) {
-//     Recipe.findById(req.params.id)
+const Recipe = require('../models/recipe')
 
-//     req.body.user = req.user._id;
-//     req.body.userAvatar = req.user.avatar
-// }
+module.exports = {
+    create,
+    delete: deleteComment,
+    edit: editComment,
+    update: updateComment
+}
 
+function create(req, res) {
+    Recipe.findById(req.params.id, function(err, recipe) {
+        req.body.user = req.user._id;
+        req.body.userAvatar = req.user.avatar;
 
-// comment=review
-// function deleteComment(req, res, next) {
-//       // Note the cool "dot" syntax to query on the property of a subdoc
-//   Movie.findOne({'comments._id': req.params.id}).then(function(movie) {
-//     // Find the comment subdoc using the id method on Mongoose arrays
-//     // https://mongoosejs.com/docs/subdocs.html
-//     const comment = movie.comments.id(req.params.id);
-//     // Ensure that the review was created by the logged in user
-//     if (!review.user.equals(req.user._id)) return res.redirect(`/movies/${movie._id}`);
-//     // Remove the review using the remove method of the subdoc
-//     review.remove();
-//     // Save the updated movie
-//     movie.save().then(function() {
-//       // Redirect back to the movie's show view
-//       res.redirect(`/movies/${movie._id}`);
-//     }).catch(function(err) {
-//       // Let Express display an error
-//       return next(err);
-//       // res.redirect(`/movies/${movie._id}`);
-//     });
-//   });
-// }
+        recipe.comments.push(req.body)
+        recipe.save(function(err) {
+            res.redirect('/recipes/${recipe._id}')
+        })
+    })   
+}
+ 
+function deleteComment(req, res, next) { 
+  Recipe.findOne({'comments._id': req.params.id}).then(function(recipe) { 
+    const comment = recipe.comments.id(req.params.id); 
+    // if (!comment.user.equals(req.user._id)) return res.redirect(`/recipes/${recipe._id}`); 
+    comment.remove(); 
+    recipe.save().then(function() { 
+      res.redirect(`/recipes/${recipe._id}`);
+    }).catch(function(err) { 
+      return next(err); 
+    });
+  });
+}
+
+function editComment(req, res) {
+    res.render('recipes/edit', { comment: Comment.getOne(req.params.id)})
+} 
+
+function updateComment(req, res) { 
+    Comment.update(req.params.id, req.body)
+    res.redirect('/comments')
+}
