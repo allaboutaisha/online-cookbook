@@ -1,34 +1,18 @@
 <%- include('../partials/header') %> 
 
 <section id="show-page">
-  <div>Name: </div>
-  <div>
-    <%= recipe.name %>
-  </div>
-  <div>imgURL: </div>
-  <div>
-    <%= recipe.imgURL %>
-  </div>
-  <div>directions: </div>
-  <div>
-    <%= recipe.directions %>
-  </div>
-  <div>Categories: </div>
-  <div>
-    <%= recipe.categories %>
-  </div> 
-  <div>Ingredients: </div>
-  <div>
-    <%= recipe.ingredients %>
-  </div>  
-  <div>
-    <form action="/recipes?_method=DELETE" method="POST">
-      <button type="submit">DELETE RECIPE</button>
-    </form> 
-  </div>
-  <div>
-    <a href="/recipes/edit">EDIT RECIPE</a>
-  </div> 
+  <div><%= recipe.imgURL %></div>
+  <div>Name:</div>
+  <div><%= recipe.name %></div>
+  <div>Ingredients:</div>
+  <div><%= recipe.ingredients %></div>
+  <div>Directions:</div>
+  <div><%= recipe.directions %></div>
+  <div>Categories:</div>
+  <div><%= recipe.categories %></div>
+  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+      <button type="submit">DELETE RECIPE</button></form> 
+  <div><a href="/recipes/edit">EDIT RECIPE</a></div> 
 </section>
 
 <% if (user) { %>

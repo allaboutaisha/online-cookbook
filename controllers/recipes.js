@@ -18,6 +18,7 @@ function index(req, res) {
 
 function show(req, res) {
     Recipe.findById(req.params.id, function(err, recipe) {
+        console.log(recipe)
         res.render('recipes/show', { title: 'One Recipe', recipe }) 
     }) 
 }
@@ -37,6 +38,11 @@ function create(req, res) {
 function deleteOne(req, res) { 
     Recipe.findById(req.params.id, function(err, recipe) {
         recipe.remove()
+        recipe.save().then(function() {
+            res.redirect('/recipes')
+        }).catch(function(err) {
+            return next(err)
+        })
     })
 }
 

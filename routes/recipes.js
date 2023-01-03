@@ -5,11 +5,11 @@ const isLoggedIn = require('../config/auth');
 
 router.get('/', recipesCtrl.index);
 
-router.get('/new', recipesCtrl.new);
+router.get('/new', isLoggedIn, recipesCtrl.new);
 
 router.get('/:id', recipesCtrl.show);
 
-router.post('/', recipesCtrl.create);
+router.post('/', isLoggedIn, recipesCtrl.create);
 
 router.delete('/:id', recipesCtrl.delete);
 
