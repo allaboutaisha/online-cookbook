@@ -1,77 +1,85 @@
 <%- include('../partials/header') %> 
 
 <section id="show-page">
-  <div><%= recipe.imgURL %></div>
   <div>Name:</div>
+  <% console.log(recipe) %>
   <div><%= recipe.name %></div>
   <div>Ingredients:</div>
   <div><%= recipe.ingredients %></div>
   <div>Directions:</div>
   <div><%= recipe.directions %></div>
   <div>Categories:</div>
-  <div><%= recipe.categories %></div>
-  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-      <button type="submit">DELETE RECIPE</button></form> 
-  <div><a href="/recipes/edit">EDIT RECIPE</a></div> 
-</section>
+  <div><%= recipe.categories %></div> 
 
-<% if (user) { %>
-    <h2>Comments</h2>
-  <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
-    <label>Comment:</label>
-    <textarea name="content"></textarea>
-    <label>Rating:</label>
-    <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+  <br><br>
+
+  <h5>Comments</h5>
+  <% recipe.comments.forEach(function(c) { %>
+    <% if (recipe.comments.length) { %>  
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Comment</th>
+            <th>Rating</th>  
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let total=0 %>
+            <% total +=c.rating %>
+              <tr> 
+                <td class="comment-user"><img alt="avatar" src="<%= c.userAvatar %>"><%= c.userName %></td>
+                <td><%= c.createdAt.toLocaleDateString() %></td>
+                <td><%= c.text %></td>
+                <td><%= c.rating %></td>
+              </tr>
+          </tbody>
+        </table>
+    <% } else { %>
+      <h5>No Comments Yet</h5>
+    <% } %>
+    <% if (user) { %>
+      <td><a href="/comments/<%= c._id %>/edit">EDIT MY COMMENT</a></td>
+      <td> 
+        <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+        </form> 
+      </td>
+    <% } %>
+  <% }); %>
+
+  <% if (user) { %>
+  <td>
+    <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
+      <label>Add Comment:</label>
+      <textarea name="text"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
     <input type="submit" value="Add Comment">
   </form>
-<% } %>
-
-<% if (recipe.comments.length) { %>  
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Date</th>
-        <th>Comment</th>
-        <th>Rating</th>  
-      </tr>
-    </thead>
-    <tbody>
-      <% let total=0 %>
-      <% recipe.comments.forEach(function(c) { %>
-        <% total +=c.rating %>
-          <tr> 
-            <td>
-              <%= c.createdAt.toLocaleDateString() %>
-            </td>
-            <td>
-              <%= c.content %>
-            </td>
-            <td>
-              <%= c.rating %>
-            </td>
-            <td> 
-                <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form> 
-            </td>
-            <td>
-              <a href="/comments/<%= c._id %>/edit">EDIT RECIPE</a>
-            </td>
-          </tr>
-          <% }); %> 
-  </tbody>
-</table>
-
-<% } else { %>
-  <h5>No Comments Yet</h5>
+  </td>
   <% } %>
+
+  <br><br>
+
+  <% if (user) { %>
+    <div>
+      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+        <button type="submit">DELETE RECIPE</button></form> 
+      <a href="/recipes/edit">EDIT RECIPE</a>
+    </div>
+  <% }; %> 
+
+</section>
+
 
 <%- include('../partials/footer') %>
   

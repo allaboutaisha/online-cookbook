@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
-    // _id: ObjectId,
-    // userId: ObjectId,
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     userAvatar: String,
     text: String,
@@ -14,11 +12,11 @@ const commentSchema = new Schema({
 });
 
 const recipeSchema = new Schema({
-    name: String,
     imgURL: String,
+    name: String,
+    ingredients: [String],
     directions: String,
     categories: [String],
-    ingredients: [String],
     comments: [commentSchema]
 }, {
     timestamps: true
