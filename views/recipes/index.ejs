@@ -1,14 +1,14 @@
-<!<%- include('../partials/header') %>
+<%- include('../partials/header') %>
 
 <h1>ANNE'S RECIPES</h1>
     <div class = "card-container">
         <% recipes.forEach(function(r) { %> 
             <div class="card">
-                <a href="/recipes/<%= r.id %>"><img src=`${r.image}`></a>
+                <a href="/recipes/<%= r.id %>"><img src="<%= r.image%>"></a>
             </div>
         <% }) %>     
     </div>
-    
+
 <a href="/recipes/new">ADD NEW</a>
 
 <%- include('../partials/footer') %>

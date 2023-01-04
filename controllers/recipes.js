@@ -2,6 +2,7 @@ const Recipe = require('../models/recipe');
 
 module.exports = {
     index,
+    homeIndex,
     show,
     new: newRecipe,
     create,
@@ -18,7 +19,7 @@ function index(req, res) {
 
 function homeIndex(req, res) {
     Recipe.find({}, function(err, recipes) {
-        res.render('/', { title: 'Anne\'s Cookbook', recipes })
+        res.render('index', { title: 'Anne\'s Cookbook', recipes })
     })
 }
 
@@ -41,7 +42,7 @@ function create(req, res) {
     })
 } 
 
-function deleteOne(req, res) { 
+function deleteOne(req, re, next) { 
     Recipe.findById(req.params.id, function(err, recipe) {
         recipe.remove()
         recipe.save().then(function() {

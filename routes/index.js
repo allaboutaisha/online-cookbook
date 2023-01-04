@@ -4,10 +4,7 @@ var passport = require('passport');
 const recipesCtrl = require('../controllers/recipes'); 
 
 /* GET home page. */
-router.get('/', recipesCtrl.index {
-  res.render('index', { title: 'Anne\'s Cookbook' });
-
-});
+router.get('/', recipesCtrl.homeIndex);
 
 router.get('/auth/google', passport.authenticate(
   'google',
