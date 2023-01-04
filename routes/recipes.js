@@ -9,11 +9,11 @@ router.get('/new', isLoggedIn, recipesCtrl.new);
 
 router.get('/:id', recipesCtrl.show);
 
+router.get('/:id/edit', isLoggedIn, recipesCtrl.edit);
+
 router.post('/', isLoggedIn, recipesCtrl.create);
 
 router.delete('/:id', recipesCtrl.delete);
-
-router.get('/:id/edit', recipesCtrl.edit);
  
 module.exports = router;
 

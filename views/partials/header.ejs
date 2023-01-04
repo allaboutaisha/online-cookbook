@@ -13,22 +13,37 @@
 
 <body>
     <nav>
-        <h4>Anne's Cookbook</h4> 
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Anne's Cookbook</a> 
+        <ul class="nav justify-content-end">
         <% if (user) { %>
-            <!-- <a href="/recipes/new" <%- title === 'Add Recipes' ? 'class="active"' : '' %>>ADD RECIPES</a> -->
-            <a href="/">HOME</a>
-            <a href="/recipes">RECIPES</a> 
-            <a href="/recipes/new">ADD RECIPE</a> 
-            <a href="/logout">LOG OUT</a>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/recipes">RECIPES</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recipes/new" <%- title === 'Add Recipes' ? 'class="active"' : '' %>>ADD RECIPES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">LOG OUT</a>
+            </li>
         <% } else { %>
-
-            <a href="/">HOME</a>
-            <a href="/recipes">RECIPES</a> 
-            <a href="/auth/google" class="login">LOG IN&nbsp; </a></a>
-            <a href="/auth/google" class="createaccount">CREATE ACCOUNT&nbsp; </a></a>
-            <!-- <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a></a>
-            <a href="/auth/google" class="createaccount">CREATE ACCOUNT&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a></a> -->
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/recipes">RECIPES</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/google">LOG IN</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/google">CREATE ACCOUNT</a>
+              </li>
         <% } %>
+        </ul>
+        </div>
     </nav>
     <main>
-        <!-- <h1><%= title %></h1> -->

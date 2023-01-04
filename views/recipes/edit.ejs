@@ -1,7 +1,7 @@
-<%- include('../partials/header') %>
+<!<%- include('../partials/header') %>
 
-<form action="/recipes/comments/<%= comment._id %>?_method=PUT" 
-    <input type="content" name="comment" value="<%= comment._id %>"
-    <button type="submit">Save Comment</button>
+<form action="/recipes/<%= recipe._id %>?_method=PUT">
+    <input type="content" name="recipe" value="<%= recipe.recipe %>">
+    <button type="submit">Save Recipe</button></form>
 
 <%- include('../partials/footer') %>

@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <h1> </h1>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<!<%- include('./partials/header') %>
   
-  <body>
-
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/">HOME</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/recipes">RECIPES</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/google">LOG IN</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/google">CREATE ACCOUNT</a>
-      </li>
-    </ul>
-
-    <!-- <a href="/">HOME</a>
-    <a href="/recipes">RECIPES</a>
-    <a href="/auth/google">LOG IN</a>
-    <a href="/auth/google">CREATE ACCOUNT</a>  -->
-
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %>. This is dedicated to my "Anne" - the turkish word for mother. I created this website so my sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who would loves Anne's cooking as much as we do or wants to try making an uzbek dish for themselves!</p> 
+    <p>Welcome to <%= title %>. This is dedicated to my "Anne" - the turkish word for mother. I created this website so my older sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who loves Anne's cooking as much as we do or for anyone who wants to try making an Uzbek dish for themselves!</p> 
     
     <div class="container">
       <div class="recipe card"> 
@@ -41,10 +12,10 @@
         [IMG] 
       </div>
     </div>
-
+    <br>
     <div>
       <p>include different category links that once clicked, it will bring to a new page of recipes (more specifically, images of the recipes that classify under the chosen category).</p>
     </div>
 
-  </body>
-</html>
+
+<%- include('./partials/footer') %>

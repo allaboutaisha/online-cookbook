@@ -47,10 +47,27 @@ function deleteOne(req, res) {
 }
 
 function editOne(req, res) {
-    res.render('recipes/edit', { recipe: Recipe.getOne(req.params.id)})
+    Recipe.findById(req.params.id, function(err, foundRecipe) {
+        res.render('recipes/edit', { title: 'Edit Recipe', recipe: foundRecipe })
+    })
 }
 
-function updateOne(req, res) {  
-    Recipe.update(req.params.id, req.body)
-    res.redirect('/recipes')
-}
+function updateOne(req, res) {
+    Recipe.findOneAndUpdate(
+        req.params.id, 
+        req.body, 
+        {
+            new: true
+        },
+        function(err, recipe) {
+            if (err || !recipe) 
+            return res.redirect('/recipes');
+            res.redirect(`/recipes/${recipe._id}`);
+        }
+    )
+};
+
+
+
+
+

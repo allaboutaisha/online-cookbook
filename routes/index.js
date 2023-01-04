@@ -19,13 +19,13 @@ router.get('/oauth2callback', passport.authenticate(
   {
     // check route here
     successRedirect: '/recipes',
-    failureRedirect: '/recipes'
+    failureRedirect: '/'
   }
 ));
 
 router.get('/logout', function(req, res) {
   req.logout(function() {
-    res.redirect('/recipes')
+    res.redirect('/')
   });
 });
 

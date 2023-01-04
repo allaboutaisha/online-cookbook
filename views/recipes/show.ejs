@@ -2,7 +2,6 @@
 
 <section id="show-page">
   <div>Name:</div>
-  <% console.log(recipe) %>
   <div><%= recipe.name %></div>
   <div>Ingredients:</div>
   <div><%= recipe.ingredients %></div>
@@ -74,7 +73,7 @@
     <div>
       <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
         <button type="submit">DELETE RECIPE</button></form> 
-      <a href="/recipes/edit">EDIT RECIPE</a>
+      <a href="/recipes/<%= recipe.id %>/edit">EDIT RECIPE</a>
     </div>
   <% }; %> 
 

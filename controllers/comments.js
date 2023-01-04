@@ -32,10 +32,11 @@ function deleteComment(req, res, next) {
 }
 
 function editComment(req, res) {
-    res.render('recipes/edit', { comment: Comment.getOne(req.params.id)})
+    res.render('recipes/edit', { comment: req.params.id})
 } 
 
 function updateComment(req, res) { 
-    Comment.update(req.params.id, req.body)
-    res.redirect('/comments')
+    Comment.findByIdAndUpdate(req.params.id, req.body, function(err, comment){
+    res.redirect(`/comments/${comment._id}`)
+})
 }
