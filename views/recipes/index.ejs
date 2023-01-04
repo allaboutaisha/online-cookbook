@@ -1,6 +1,6 @@
 <!<%- include('../partials/header') %>
 
-    <h1>ANNE'S RECIPES</h1>
+<h1>ANNE'S RECIPES</h1>
     <!-- <table> -->
         <!-- <thead>
             <tr>
@@ -11,8 +11,11 @@
             </tr>
         </thead>
         <tbody> -->
+        <div class = "card-container">
             <% recipes.forEach(function(r) { %> 
-                <a href="/recipes/<%= r.id %>"><img src="r.image"></a>
+                <div class="card">
+                    <a href="/recipes/<%= r.id %>"><img src="r.image"></a>
+                </div>
             <!-- <tr>
                 <td><%= r.name %></td> 
                 <td><%= r.image %></td> 
@@ -24,8 +27,7 @@
             <% }) %>     
         <!-- </body> 
     </table> -->
-
-
+        </div>
 <a href="/recipes/new">ADD NEW</a>
 
 <%- include('../partials/footer') %>
