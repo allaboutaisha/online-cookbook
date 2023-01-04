@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+const recipesCtrl = require('../controllers/recipes'); 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', recipesCtrl.index {
   res.render('index', { title: 'Anne\'s Cookbook' });
+
 });
 
 router.get('/auth/google', passport.authenticate(

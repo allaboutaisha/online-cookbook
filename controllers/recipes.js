@@ -16,6 +16,12 @@ function index(req, res) {
     })
 }
 
+function homeIndex(req, res) {
+    Recipe.find({}, function(err, recipes) {
+        res.render('/', { title: 'Anne\'s Cookbook', recipes })
+    })
+}
+
 function show(req, res) {
     Recipe.findById(req.params.id, function(err, recipe) {
         console.log(recipe)

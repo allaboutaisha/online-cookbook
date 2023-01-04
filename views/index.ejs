@@ -1,21 +1,13 @@
 <!<%- include('./partials/header') %>
   
-    <p>Welcome to <%= title %>. This is dedicated to my "Anne" - the turkish word for mother. I created this website so my older sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who loves Anne's cooking as much as we do or for anyone who wants to try making an Uzbek dish for themselves!</p> 
-    
-    <div class="container">
-      <div class="recipe card"> 
-        [IMG] 
-        [IMG] 
-        [IMG] 
-        [IMG] 
-        [IMG] 
-        [IMG] 
-      </div>
-    </div>
-    <br>
-    <div>
-      <p>include different category links that once clicked, it will bring to a new page of recipes (more specifically, images of the recipes that classify under the chosen category).</p>
-    </div>
+<p>Welcome to <%= title %>. This is dedicated to my "Anne" - the turkish word for mother. I created this website so my older sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who loves Anne's cooking as much as we do or for anyone who wants to try making an Uzbek dish for themselves!</p> 
 
+  <div class = "card-container">
+    <% recipes.forEach(function(r) { %> 
+        <div class="card">
+          <a href="/recipes/<%= r.id %>"><img src=`${r.image}`></a>
+        </div>
+    <% }) %>     
+  </div>
 
 <%- include('./partials/footer') %>

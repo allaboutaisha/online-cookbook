@@ -1,33 +1,14 @@
 <!<%- include('../partials/header') %>
 
 <h1>ANNE'S RECIPES</h1>
-    <!-- <table> -->
-        <!-- <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Directions</th>    
-                <th>Ingredients</th>     
-            </tr>
-        </thead>
-        <tbody> -->
-        <div class = "card-container">
-            <% recipes.forEach(function(r) { %> 
-                <div class="card">
-                    <a href="/recipes/<%= r.id %>"><img src="r.image"></a>
-                </div>
-            <!-- <tr>
-                <td><%= r.name %></td> 
-                <td><%= r.image %></td> 
-                <td><%= r.directions %></td> 
-                <td><%= r.categories %></td> 
-                <td><%= r.ingredients %></td> 
-                <td><a href="/recipes/<%= r.id %>">View this Recipe</td>   
-            </tr> -->
-            <% }) %>     
-        <!-- </body> 
-    </table> -->
-        </div>
+    <div class = "card-container">
+        <% recipes.forEach(function(r) { %> 
+            <div class="card">
+                <a href="/recipes/<%= r.id %>"><img src=`${r.image}`></a>
+            </div>
+        <% }) %>     
+    </div>
+    
 <a href="/recipes/new">ADD NEW</a>
 
 <%- include('../partials/footer') %>
