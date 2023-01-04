@@ -1,6 +1,8 @@
 <%- include('../partials/header') %> 
 
 <section id="show-page">
+
+  <div><img src="<%= recipe.imgURL%>"></div>
   <div>Name:</div>
   <div><%= recipe.name %></div>
   <div>Ingredients:</div>
@@ -40,7 +42,34 @@
       <h5>No Comments Yet</h5>
     <% } %>
     <% if (user) { %>
-      <td><a href="/comments/<%= c._id %>/edit">EDIT MY COMMENT</a></td>
+      <td>
+        <form id="edit-comment-form" action="/recipes/comments/<%= c._id %>?_method=PUT" method="POST">
+          <input type="content" name="text" value="<%= c.text %>">
+          <label>Rating:</label>
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button id="button">Save Comment</button>
+        </form>
+        
+        <button id="show-button">Edit Your Comment</button>
+        <script>
+          const $form = $('#edit-comment-form');
+          $form.hide();
+        
+          const $button = $('#show-button');
+        
+          $button.click(function() {
+            $form.show();
+            $button.hide();
+          })
+        </script>
+      </td>
+
       <td> 
         <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
           <button type="submit">X</button>
@@ -52,8 +81,7 @@
   <% if (user) { %>
   <td>
     <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
-      <label>Add Comment:</label>
-      <textarea name="text"></textarea>
+      <textarea name="text" placeholder="type comment here"></textarea>
       <label>Rating:</label>
       <select name="rating">
         <option value="1">1</option>
@@ -62,11 +90,26 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-    <input type="submit" value="Add Comment">
+    <button id="button">Add Comment</button>
   </form>
+
+  <button id="show-second-button">Add Comment</button>
+  <script>
+    const $secondform = $('#add-comment-form');
+    $secondform.hide();
+  
+    const $secondbutton = $('#show-second-button');
+  
+    $secondbutton.click(function() {
+      $secondform.show();
+      $secondbutton.hide();
+    })
+  </script>
+
   </td>
   <% } %>
 
+  <br><br>
   <br><br>
 
   <% if (user) { %>

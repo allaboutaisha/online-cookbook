@@ -42,10 +42,9 @@ function create(req, res) {
     })
 } 
 
-function deleteOne(req, re, next) { 
+function deleteOne(req, res, next) { 
     Recipe.findById(req.params.id, function(err, recipe) {
-        recipe.remove()
-        recipe.save().then(function() {
+        recipe.remove().then(function() {
             res.redirect('/recipes')
         }).catch(function(err) {
             return next(err)
@@ -67,8 +66,7 @@ function updateOne(req, res) {
             new: true
         },
         function(err, recipe) {
-            if (err || !recipe) 
-            return res.redirect('/recipes');
+            if (err || !recipe) return res.redirect('/recipes');
             res.redirect(`/recipes/${recipe._id}`);
         }
     )

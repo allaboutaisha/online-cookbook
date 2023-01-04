@@ -1,8 +1,0 @@
-<!<%- include('../partials/header') %>
-
-<form action="/recipes/comments/<%= comment._id %>?_method=PUT">
-    <input type="content" name="comment" value="<%= comment.comment %>">
-    <button type="submit">Save Comment</button>
-</form>
-
-<%- include('../partials/footer') %>

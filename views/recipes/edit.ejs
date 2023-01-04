@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form action="/recipes/<%= recipe._id %>?_method=PUT">
+<form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
         <div class="row mb-3">
           <label for="inputRecipeName" class="col-sm-2 col-form-label">Name</label>
           <div class="col-sm-10">
@@ -10,7 +10,7 @@
         <div class="row mb-3">
           <label for="inputRecipeIMG" class="col-sm-2 col-form-label">Image</label>
           <div class="col-sm-10">
-            <input type="text" name="image" class="form-control" id="inputRecipeIMG" value="<%= recipe.image %>">
+            <input type="text" name="imgURL" class="form-control" id="inputRecipeIMG" value="<%= recipe.imgURL %>">
           </div>
         </div>
         <div class="row mb-3">
@@ -25,6 +25,12 @@
               <input type="text" name="directions" class="form-control" id="inputRecipeDirections" value="<%= recipe.directions %>">
             </div>
         </div>
+        <div class="row mb-3">
+          <label for="inputRecipeCategories" class="col-sm-2 col-form-label">Categories</label>
+          <div class="col-sm-10">
+            <input type="text" name="categories" class="form-control" id="inputRecipeCategories" value="<%= recipe.categories %>">
+          </div>
+      </div>
         <div class="d-grid justify-content-center">
             <button type="submit" class="btn btn-primary">Save Recipe</button>
         </div>

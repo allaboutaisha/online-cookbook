@@ -5,7 +5,15 @@
   <div class = "card-container">
     <% recipes.forEach(function(r) { %> 
         <div class="card">
-          <a href="/recipes/<%= r.id %>"><img src="<%= r.image%>"></a>
+          <a href="/recipes/<%= r.id %>"><img src="<%= r.imgURL%>"></a>
+        </div>
+    <% }) %>     
+  </div>
+
+  <div class = "categories-container">
+    <% recipes.forEach(function(r) { %> 
+        <div class="categories-card">
+          <a href="/recipes/<%= r.id %>"><"<%= r.categories %>"></a>
         </div>
     <% }) %>     
   </div>

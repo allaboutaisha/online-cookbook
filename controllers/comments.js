@@ -21,8 +21,9 @@ function create(req, res) {
 function deleteComment(req, res, next) { 
   Recipe.findOne({'comments._id': req.params.id}).then(function(recipe) { 
     const comment = recipe.comments.id(req.params.id); 
-    // if (!comment.user.equals(req.user._id)) return res.redirect(`/recipes/${recipe._id}`); 
-    comment.remove(); 
+    console.log(comment)
+    if (!comment.user.equals(req.user._id)) return res.redirect(`/recipes/${recipe._id}`); 
+    comment.remove()
     recipe.save().then(function() { 
       res.redirect(`/recipes/${recipe._id}`);
     }).catch(function(err) { 
@@ -32,11 +33,18 @@ function deleteComment(req, res, next) {
 }
 
 function editComment(req, res) {
-    res.render('recipes/edit', { comment: req.params.id})
-} 
+    Recipe.findOne(req.params.id, function(err, recipe) {
+      const comment = recipe.comments.id(req.params.id);
+      res.render('comments/edit', {comment});
+})
+}
 
 function updateComment(req, res) { 
-    Comment.findByIdAndUpdate(req.params.id, req.body, function(err, comment){
-    res.redirect(`/comments/${comment._id}`)
+    Recipe.findOne({"comments._id" : req.params.id}, function(err, recipe) {
+      recipe.comments.id(req.params.id).set(req.body);
+      recipe.save(function() {
+        if (err) return res.redirect(`/recipes/${recipe._id}`);
+        res.redirect(`/recipes/${recipe._id}`);
+      });
 })
 }
