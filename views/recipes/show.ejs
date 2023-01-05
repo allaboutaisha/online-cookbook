@@ -16,16 +16,7 @@
     <h6>Comments</h6>
     <% recipe.comments.forEach(function(c) { %>
       <% if (recipe.comments.length) { %>  
-        <table>
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Date</th>
-              <th>Comment</th>
-              <th>Rating</th>  
-              <th></th>
-            </tr>
-          </thead>
+        <table id="comments-table"> 
           <tbody>
             <% let total=0 %>
               <% total +=c.rating %>
@@ -43,7 +34,7 @@
 
       <% if (user) { %>
         <div>
-          <form id="edit-comment-form" action="/recipes/comments/<%= c._id %>?_method=PUT" method="POST">
+          <form class="edit-comment-form" action="/recipes/comments/<%= c._id %>?_method=PUT" method="POST">
             <input type="content" name="text" value="<%= c.text %>">
             <label>Rating:</label>
             <select name="rating">
@@ -56,17 +47,7 @@
             <button id="button">Save Comment</button>
           </form>
           
-          <button id="show-button">Edit Comment</button>
-          <script>
-            const $form = $('#edit-comment-form');
-            const $button = $('#show-button');
-            
-            $form.hide();
-            $button.click(function() {
-              $form.show();
-              $button.hide();
-            })
-          </script>
+          <button class="show-button">Edit Comment</button>
 
           <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>
@@ -75,10 +56,20 @@
       <% } %>
     <% }); %>
   
+    <script>
+      const $form = $('.edit-comment-form');
+      const $commentsContainer = $('.comments-container');
+            
+      $form.hide();
+      $commentsContainer.on('click','.show-button', function() {
+        $(this).parent().find('.edit-comment-form').show();
+        $(this).hide();
+      })
+    </script>
 
     <% if (user) { %>
-      <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
-        <textarea name="text" placeholder="type comment here"></textarea>
+      <form class="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
+        <textarea name="text" placeholder="Type Comment Here..."></textarea>
         <label>Rating:</label>
         <select name="rating">
           <option value="1">1</option>
@@ -90,24 +81,24 @@
       <button id="button">Submit</button>
     </form>
 
-    <button id="show-second-button">ADD COMMENT</button>
-    <script>
-      const $secondform = $('#add-comment-form');
-      const $secondbutton = $('#show-second-button');
-
-      $secondform.hide();
-      $secondbutton.click(function() {
-        $secondform.show();
-        $secondbutton.hide();
-      })
-    </script>
-    </div>
+    <button class="show-second-button">ADD COMMENT</button>
     <% } %>
 
+    <script>
+      const $secondform = $('.add-comment-form');
+
+      $secondform.hide();
+      $commentsContainer.on('click','.show-second-button', function() {
+        $(this).parent().find('.add-comment-form').show();
+        $(this).hide();
+      })
+    </script>
+
+  </div>
 
   <% if (user) { %>
     <div class="bottom-btns">
-      <button><a href="/recipes/<%= recipe.id %>/edit">EDIT RECIPE</a></button>
+      <button><a href="/recipes/<%= recipe.id %>/edit" class="edit-recipe-btn">EDIT RECIPE</a></button>
       <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
         <button type="submit">DELETE RECIPE</button></form> 
     </div>

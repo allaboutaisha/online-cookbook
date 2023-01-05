@@ -2,12 +2,12 @@
 
 <h1>THE RECIPES</h1>
     <div class = "card-container">
-        <% recipes.forEach(function(r) { %> 
-            <div class="card">
-                <a href="/recipes/<%= r.id %>"><img src="<%= r.imgURL%>"></a>
-            </div>
-        <% }) %>     
-    </div>
+    <% recipes.forEach(function(r) { %> 
+      <a href="/recipes/<%= r.id %>" class="img-link">
+        <div class="card"><img src="<%= r.imgURL%>" class="img-card"></div>
+      </a>
+    <% }) %>     
+  </div>
 
 <a href="/recipes/new">ADD NEW</a>
 

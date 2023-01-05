@@ -7,17 +7,18 @@
 
   <div class = "card-container">
     <% recipes.forEach(function(r) { %> 
-        <div class="card">
-          <a href="/recipes/<%= r.id %>"><img src="<%= r.imgURL%>"></a>
-        </div>
+      <a href="/recipes/<%= r.id %>" class="img-link">
+        <div class="card"><img src="<%= r.imgURL%>" class="img-card"></div>
+      </a>
     <% }) %>     
   </div>
 
   <div class = "categories-container">
+    <h3>Categories</h3>
     <% recipes.forEach(function(r) { %> 
-        <div class="categories-card">
-          <a href="/recipes/<%= r.id %>"><"<%= r.categories %>"></a>
-        </div>
+      <a href="/recipes/<%= r.id %>">
+        <div class="categories-card"><%= r.categories %></div>
+      </a>
     <% }) %>     
   </div>
 
