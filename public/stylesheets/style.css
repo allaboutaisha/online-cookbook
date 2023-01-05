@@ -25,9 +25,20 @@ a {
   color: #052836;
 }
 
-.about-paragraph {
+.about-container {
+  margin: 75px;
+}
+
+#about-welcome {
   text-align: center;
-  margin: 50px;
+  font-size: xx-large;
+  font-family: cursive;
+}
+
+#about-paragraph {
+  text-align: center;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .card-container {
@@ -45,16 +56,24 @@ a {
   height: 250px;
 }
 
+img {
+  margin: 50px;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
 .one-recipe-container {
   text-align: center
 }
 
-.comments-container {
-  color: brown
-}
+/* .comments-container {
+  text-align: center
+} */
 
 .bottom-btns {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 10px;
 }

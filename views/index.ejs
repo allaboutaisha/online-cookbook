@@ -1,6 +1,9 @@
 <%- include('./partials/header') %>
-  
-<p class="about-paragraph">Welcome to <%= title %>. This is dedicated to my "Anne" - the turkish word for mother. I created this website so my older sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who loves Anne's cooking as much as we do or for anyone who wants to try making an Uzbek dish for themselves!</p> 
+
+<div class="about-container">
+  <h5 id="about-welcome">Welcome to <%= title %>!</h5>
+  <p id="about-paragraph">This is dedicated to my "Anne" - the turkish word for mother. I created this website so my older sisters and I can have easy access to our mother's amazing Uzbek recipes.  It is also available for anyone who loves Anne's cooking as much as we do or for anyone who wants to try making an Uzbek dish for themselves!</p> 
+</div>
 
   <div class = "card-container">
     <% recipes.forEach(function(r) { %> 

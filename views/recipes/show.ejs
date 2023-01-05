@@ -2,8 +2,7 @@
 
 <section id="show-one-recipe-page">
   <div class="one-recipe-container">
-    <div class="one-recipe-card">
-      <img src="<%= recipe.imgURL%>">
+      <img src="<%= recipe.imgURL%>" class="img-fluid" alt="Responsive image">
       <h1><%= recipe.name %></h1>
       <h3>Ingredients:</h3>
       <p><%= recipe.ingredients %></p>
@@ -11,7 +10,6 @@
       <p><%= recipe.directions %></p>
       <h3>Categories:</h3>
       <p><%= recipe.categories %></p> 
-    </div>
   </div>
 
   <div class="comments-container">
@@ -42,8 +40,8 @@
       <% } else { %>
         <h5>No Comments Yet</h5>
       <% } %>
-      <% if (user) { %>
 
+      <% if (user) { %>
         <div>
           <form id="edit-comment-form" action="/recipes/comments/<%= c._id %>?_method=PUT" method="POST">
             <input type="content" name="text" value="<%= c.text %>">
