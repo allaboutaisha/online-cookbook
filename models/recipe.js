@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
+    userName: String,
     userAvatar: String,
     text: String,
     rating: {type: Number, min: 1, max: 5, default: 5} 

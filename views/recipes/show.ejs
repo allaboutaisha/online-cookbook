@@ -15,17 +15,16 @@
   <div class="comments-container">
     <h6>Comments</h6>
     <% recipe.comments.forEach(function(c) { %>
-      <% if (recipe.comments.length) { %>  
+    <% if (recipe.comments.length) { %>  
         <table id="comments-table">
-          <!-- <thead>
+          <thead>
             <tr>
               <th>User</th>
               <th>Date</th>
               <th>Comment</th>
               <th>Rating</th>  
-              <th></th>
             </tr>
-          </thead> -->
+          </thead>
           <tbody>
             <% let total=0 %>
               <% total +=c.rating %>
@@ -37,9 +36,9 @@
                 </tr>
             </tbody>
           </table>
-      <% } else { %>
+    <% } else { %>
         <h5>No Comments Yet</h5>
-      <% } %>
+    <% } %>
 
       <% if (user) { %>
         <div>
