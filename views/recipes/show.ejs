@@ -14,18 +14,19 @@
 
   <div class="comments-container">
     <h6>Comments</h6>
-    <% recipe.comments.forEach(function(c) { %>
-    <% if (recipe.comments.length) { %>  
-        <table id="comments-table">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Date</th>
-              <th>Comment</th>
-              <th>Rating</th>  
-            </tr>
-          </thead>
-          <tbody>
+    <table id="comments-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Comment</th>
+          <th>Rating</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <% console.log(recipe.comments.length) %> 
+        <% recipe.comments.forEach(function(c) { %>
+          <% if (recipe.comments.length > 0) { %>  
             <% let total=0 %>
               <% total +=c.rating %>
                 <tr> 
@@ -34,11 +35,11 @@
                   <td><%= c.text %></td>
                   <td><%= c.rating %></td>
                 </tr>
+          <% } else { %>
+            <h5>No Comments Yet</h5>
+          <% } %>
             </tbody>
           </table>
-    <% } else { %>
-        <h5>No Comments Yet</h5>
-    <% } %>
 
       <% if (user) { %>
         <div>
