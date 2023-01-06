@@ -2,7 +2,7 @@
 Anne's Cookbook - Her Uzbek Recipes Online
 https://second-project-recipes.herokuapp.com/
 
-# Screenshot of Game
+# Screenshot of Full-stack CRUD application
 ![](include screenshot)
 
 # Wireframe
