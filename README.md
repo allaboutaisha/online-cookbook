@@ -6,7 +6,7 @@ https://second-project-recipes.herokuapp.com/
 ![](include screenshot)
 
 # Wireframe
-![](![IMG_7080 HEIC](https://user-images.githubusercontent.com/118096397/210922746-fcaea628-cec3-461f-81ce-7317b8d68de5.png))
+![IMG_7080 HEIC](https://user-images.githubusercontent.com/118096397/210922746-fcaea628-cec3-461f-81ce-7317b8d68de5.png)
 
 # Technologies Used:
 - MongoDB
