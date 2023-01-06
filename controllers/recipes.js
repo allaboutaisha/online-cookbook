@@ -24,26 +24,21 @@ function homeIndex(req, res) {
     })
 }
 
-// function categoriesIndex(req, res) {
-//     const category = req.params.category.split(' ')[0];
-//     Recipe.find({ categories: category }, function(err, recipes) {
-//       res.render('categories', { recipes, category });
-//     });
-// }  
 
-// function categoriesIndex(req, res) {
-//     const category = req.params.category;
-//     Recipe.find({ categories: { $in: [category] } }, function(err, recipes) {
-//       res.render('categories', { recipes, category });
-//     });
-//   }
 
 function categoriesIndex(req, res) {
-    const category = req.params.category.split(' ');
-    Recipe.find({ categories: { $in: category } }, function(err, recipes) {
-      res.render('categories', { recipes, category: req.params.category });
+    const category = req.params.category;
+    Recipe.find({ categories: { $in: [category] } }, function(err, recipes) {
+      res.render('recipes/categories', { title: 'Categories', recipes, category });
     });
   }
+
+// function categoriesIndex(res, req) {
+//     const category = req.params.category.split(' ');
+//     Recipe.find({ categories: { $in: category } }, function(err, recipes) {
+//       res.render('recipes/categories', { recipes, category: req.params.category });
+//     });
+//   }
 
 function show(req, res) {
     Recipe.findById(req.params.id, function(err, recipe) {

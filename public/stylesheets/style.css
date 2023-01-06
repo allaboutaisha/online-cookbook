@@ -44,7 +44,7 @@ a {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  width: 1000px;
+  width: 1200px;
   height: auto;
 }
 
@@ -76,6 +76,10 @@ a {
   margin: 12px;
   text-align: center;
   text-decoration: none;
+}
+
+.new-recipe-link {
+  text-align: center;
 }
 
 .img-fluid {
