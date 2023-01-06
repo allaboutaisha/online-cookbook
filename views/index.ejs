@@ -14,12 +14,11 @@
   </div>
 
   <div class = "categories-container">
-    <h2>Categories:</h2>
     <% recipes.forEach(function(r) { %> 
       <div class="card-deck">
         <% r.categories.forEach(function(category) { %>
-          <div class="card">
-            <div class="card-body">
+          <div class="card" id="second-card">
+            <div class="category-card">
               <a href="/recipes/categories/<%= category %>"><%= category %></a>
             </div>
           </div>
