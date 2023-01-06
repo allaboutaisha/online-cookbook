@@ -3,7 +3,7 @@ Anne's Cookbook - Her Uzbek Recipes Online
 https://second-project-recipes.herokuapp.com/
 
 # Screenshot of Game
-![](https://github.com/allaboutaisha/first-project/blob/main/Game%20Screen.png)
+![](include screenshot)
 
 # Wireframe
 ![](![IMG_7080 HEIC](https://user-images.githubusercontent.com/118096397/210922746-fcaea628-cec3-461f-81ce-7317b8d68de5.png))
