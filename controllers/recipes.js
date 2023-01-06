@@ -3,6 +3,7 @@ const Recipe = require('../models/recipe');
 module.exports = {
     index,
     homeIndex,
+    categoriesIndex,
     show,
     new: newRecipe,
     create,
@@ -22,6 +23,13 @@ function homeIndex(req, res) {
         res.render('index', { title: 'Anne\'s Cookbook', recipes })
     })
 }
+
+function categoriesIndex(req, res) {
+    const category = req.params.category.split(' ')[0];
+    Recipe.find({ categories: category }, function(err, recipes) {
+      res.render('categories', { recipes, category });
+    });
+  }  
 
 function show(req, res) {
     Recipe.findById(req.params.id, function(err, recipe) {

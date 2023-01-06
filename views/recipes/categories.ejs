@@ -1,0 +1,15 @@
+<%- include('../partials/header') %> 
+
+
+<div class = "card-container">
+<h1>Recipes with Category: <%= category %></h1>
+<% recipes.forEach(function(r) { %> 
+    <h2><%= r.name %></h2>
+      <a href="/recipes/<%= r.id %>" class="img-link">
+        <div class="card"><img src="<%= r.imgURL%>" class="img-card"></div>
+      </a>
+    <% }) %>  
+</div>
+
+
+<%- include('../partials/footer') %> 

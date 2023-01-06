@@ -16,7 +16,16 @@
     <h6>Comments</h6>
     <% recipe.comments.forEach(function(c) { %>
       <% if (recipe.comments.length) { %>  
-        <table id="comments-table"> 
+        <table id="comments-table">
+          <!-- <thead>
+            <tr>
+              <th>User</th>
+              <th>Date</th>
+              <th>Comment</th>
+              <th>Rating</th>  
+              <th></th>
+            </tr>
+          </thead> -->
           <tbody>
             <% let total=0 %>
               <% total +=c.rating %>

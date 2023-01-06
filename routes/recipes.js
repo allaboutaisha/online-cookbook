@@ -15,7 +15,9 @@ router.post('/', isLoggedIn, recipesCtrl.create);
 
 router.delete('/:id', recipesCtrl.delete);
 
-router.put('/:id', recipesCtrl.update)
- 
+router.put('/:id', recipesCtrl.update);
+
+router.get('/categories/:category', recipesCtrl.categoriesIndex);
+  
 module.exports = router;
 

@@ -14,12 +14,18 @@
   </div>
 
   <div class = "categories-container">
-    <h3>Categories</h3>
+    <h2>Categories:</h2>
     <% recipes.forEach(function(r) { %> 
-      <a href="/recipes/<%= r.id %>">
-        <div class="categories-card"><%= r.categories %></div>
-      </a>
-    <% }) %>     
+      <div class="card-deck">
+        <% r.categories.forEach(function(category) { %>
+          <div class="card">
+            <div class="card-body">
+              <a href="/categories/<%= category %>"><%= category %></a>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% }) %>
   </div>
 
 <%- include('./partials/footer') %>
