@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const categoriesSchema = new Schema({
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    category: String
+},
+{
+    timestamps: true
+});
+
 const commentSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     userName: String,
@@ -17,7 +25,7 @@ const recipeSchema = new Schema({
     name: String,
     ingredients: [String],
     directions: String,
-    categories: [String],
+    categories: [categoriesSchema],
     comments: [commentSchema]
 }, {
     timestamps: true
