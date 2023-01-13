@@ -35,6 +35,12 @@ function newRecipe(req, res) {
 }
 
 function create(req, res) {
+    const categoryObj = {
+        category: req.body.categories,
+        user: req.user._id
+    }
+    req.body.categories = [categoryObj];
+    
     const recipe = new Recipe(req.body)
     recipe.save(function(err) {
         if (err) return res.render('recipes/new');

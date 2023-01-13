@@ -15,6 +15,7 @@
   <div class="comments-container">
     <h6>Comments</h6>
     <table id="comments-table">
+      <% if (recipe.comments.length) { %>  
       <thead>
         <tr>
           <th>User</th>
@@ -24,7 +25,6 @@
         </tr>
       </thead>
       <tbody>
-        <% if (recipe.comments.length) { %>  
           <% recipe.comments.forEach(function(c) { %>
             <% let total=0 %>
               <% total +=c.rating %>
