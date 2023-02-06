@@ -1,4 +1,5 @@
 const Recipe = require('../models/recipe');
+const Category = require('../models/category');
 
 module.exports = {
     index,
@@ -24,8 +25,7 @@ function homeIndex(req, res) {
 }
 
 function show(req, res) {
-    Recipe.findById(req.params.id, function(err, recipe) {
-        console.log(recipe)
+    Recipe.findById(req.params.id, function(err, recipe) { 
         res.render('recipes/show', { title: 'One Recipe', recipe }) 
     }) 
 }
@@ -35,11 +35,11 @@ function newRecipe(req, res) {
 }
 
 function create(req, res) {
-    const categoryObj = {
-        category: req.body.categories,
-        user: req.user._id
-    }
-    req.body.categories = [categoryObj];
+    // const categoryObj = {
+    //     category: req.body.categories,
+    //     user: req.user._id
+    // }
+    // req.body.categories = [categoryObj];
     
     const recipe = new Recipe(req.body)
     recipe.save(function(err) {

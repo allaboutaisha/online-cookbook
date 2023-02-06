@@ -1,7 +1,11 @@
 const Recipe = require('../models/recipe')
+const Category = require('../models/category')
 
 module.exports = { 
     categoriesIndex,
+    new: newCategory,
+    create,
+    addToCategories,
     show,
     delete: deleteCategory,
     edit: editCategory,
@@ -15,7 +19,30 @@ function categoriesIndex (req, res) {
         res.render('recipes/categories', { title: 'Categories', recipes, category });
     });
 }
- 
+
+function newCategory(req, res) {
+  Category.find({}).then(function(categories) {
+       res.render('categories/new', { 
+           categories, 
+           title: 'Add Category'
+       });
+  }); 
+
+function create(req, res) { 
+  Category.create(req.body, function (err, category) {
+      res.redirect('/categories/new');
+  });
+}
+
+function addToCategories(req, res) {
+  Recipe.findById(req.params.id, function(err, recipe) {
+      recipe.category.push(req.body.categoryId)
+      recipe.save(function(err) {
+          res.redirect(`/recipes/${recipe._id}`)
+      })
+  })
+}
+
 // when user clicks on category, show all recipes
 function show(req, res) {
     const category = req.params.category;

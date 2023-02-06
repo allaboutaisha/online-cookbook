@@ -1,13 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const categoriesSchema = new Schema({
-    user: {type: Schema.Types.ObjectId, ref: 'User'},
-    category: String
-},
-{
-    timestamps: true
-});
+const Schema = mongoose.Schema; 
 
 const commentSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -24,8 +16,8 @@ const recipeSchema = new Schema({
     imgURL: String,
     name: String,
     ingredients: [String],
-    directions: String,
-    categories: [categoriesSchema],
+    directions: String, 
+    categories: [{type: Schema.Types.ObjectId, ref: 'Category'}],
     comments: [commentSchema]
 }, {
     timestamps: true

@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<div>Before adding, please ensure that the category is not in the following list:</div>
+<section id="badge-container">
+  <% categories.forEach(function(c) { %>
+    <article class="badge"><%= c.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-category-form" action="/categories" method="POST">
+  <label>Category:</label>
+  <input type="text" name="category"> 
+  <input type="submit" value="Add Category">
+</form>
+
+<%- include('../partials/footer') %>
