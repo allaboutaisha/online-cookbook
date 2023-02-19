@@ -1,5 +1,5 @@
 # second-project
-Anne's Cookbook - Her Uzbek Recipes Online
+Anne's Cookbook - Her Uzbek Recipes Online. 
 https://second-project-recipes.herokuapp.com/
 
 # Screenshot of Full-stack CRUD application
@@ -17,10 +17,6 @@ https://second-project-recipes.herokuapp.com/
 - JQuery
 - CSS
 - HTML
-
-# Major Hurdles
-- Update Function
-- Categories field in the recipe model
 
 # Next Steps
 - Revamp styling
