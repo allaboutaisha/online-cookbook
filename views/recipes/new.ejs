@@ -27,12 +27,15 @@
               <input type="text" name="directions" class="form-control" id="inputRecipeDirections">
             </div>
         </div>
-        <!-- <div class="row mb-3">
-            <label for="inputRecipeCategories" class="col-sm-2 col-form-label">Categories</label>
+        <div class="row mb-3">
+            <label for="inputRecipeDirections" class="col-sm-2 col-form-label">Categories</label>
+            <% categories.forEach(c => %>
             <div class="col-sm-10">
-              <input type="text" name="categories" class="form-control" id="inputRecipeCategories">
+                <span><%= c.category</span>     
+                <input type="checkbox" name="<%= c.category %>" value="<% c._id %> "/>
             </div>
-        </div> -->
+            <% ); %>
+        </div>
         <div class="d-grid justify-content-center">
             <button type="submit" class="btn btn-primary">Add Recipe</button>
         </div>

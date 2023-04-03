@@ -31,15 +31,20 @@ function show(req, res) {
 }
 
 function newRecipe(req, res) {
+    // query the category collection for all available categories
+    // send an array of all categories to the new.ejs template for creating recipes
+    /*
+        Category.find({}, (err, categories) => {
+            res.render('recipes/new', { title: 'Add recipes', categories })
+        })
+    
+    */
     res.render('recipes/new', { title: 'Add recipes' })
 }
 
 function create(req, res) {
-    // const categoryObj = {
-    //     category: req.body.categories,
-    //     user: req.user._id
-    // }
-    // req.body.categories = [categoryObj];
+
+    
     
     const recipe = new Recipe(req.body)
     recipe.save(function(err) {
